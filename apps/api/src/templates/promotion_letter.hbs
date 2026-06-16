@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Letter of Promotion</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        We are delighted to inform you that, in recognition of your consistent
+        performance and valuable contributions to <strong>{{companyName}}</strong>, you
+        have been promoted to the position of <strong>{{newJobTitle}}</strong>{{#if newDepartment}}
+        in the <strong>{{newDepartment}}</strong> department{{/if}}, effective
+        <strong>{{effectiveDate}}</strong>.
+      </p>
+
+      <table class="kv">
+        <tr><th>Current Designation</th><td>{{jobTitle}}</td></tr>
+        <tr><th>New Designation</th><td>{{newJobTitle}}</td></tr>
+        <tr><th>Department</th><td>{{#if newDepartment}}{{newDepartment}}{{else}}{{department}}{{/if}}</td></tr>
+        <tr><th>Effective Date</th><td>{{effectiveDate}}</td></tr>
+        {{#if newSalaryFormatted}}<tr><th>Revised Annual CTC</th><td>{{newSalaryFormatted}} per annum</td></tr>{{/if}}
+      </table>
+
+      <p>
+        Your new role carries greater responsibility, and we are confident that you will
+        continue to excel and inspire those around you. All other terms and conditions of
+        your employment remain unchanged unless communicated separately.
+      </p>
+      <p>
+        Please accept our heartfelt congratulations on this well-deserved advancement. We
+        look forward to your continued success.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">With best wishes,</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+        <div class="sign__title">{{companyName}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

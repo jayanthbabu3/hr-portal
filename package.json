@@ -1,0 +1,21 @@
+{
+  "name": "hr-portal",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,api -c blue,green \"npm run dev -w @hr-portal/web\" \"npm run dev -w @hr-portal/api\"",
+    "dev:web": "npm run dev -w @hr-portal/web",
+    "dev:api": "npm run dev -w @hr-portal/api",
+    "build": "npm run build -w @hr-portal/shared && npm run build -w @hr-portal/api && npm run build -w @hr-portal/web",
+    "db:generate": "npm run db:generate -w @hr-portal/api",
+    "db:migrate": "npm run db:migrate -w @hr-portal/api",
+    "db:seed": "npm run db:seed -w @hr-portal/api",
+    "db:push": "npm run db:push -w @hr-portal/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

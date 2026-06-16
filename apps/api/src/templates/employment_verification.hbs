@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">To Whomsoever It May Concern</div>
+      <h1 class="doc-title">Employment Verification Letter</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        This letter is to verify that <strong>{{fullName}}</strong> is currently employed
+        with <strong>{{companyName}}</strong>. The details of employment are as follows:
+      </p>
+
+      <table class="kv">
+        <tr><th>Employee Name</th><td>{{fullName}}</td></tr>
+        <tr><th>Designation</th><td>{{jobTitle}}</td></tr>
+        <tr><th>Department</th><td>{{department}}</td></tr>
+        <tr><th>Date of Joining</th><td>{{joinDate}}</td></tr>
+        <tr><th>Employment Status</th><td>Active &amp; in good standing</td></tr>
+        <tr><th>Work Location</th><td>{{place}}, India</td></tr>
+      </table>
+
+      <p>
+        {{#if purpose}}This letter has been issued at the request of the employee for the
+        purpose of <strong>{{purpose}}</strong>.{{else}}This letter has been issued at the
+        request of the employee for official purposes.{{/if}}
+      </p>
+      <p>
+        Should you require any further information, please contact the People team at
+        {{companyEmail}} or {{companyPhone}}.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For {{companyName}},</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

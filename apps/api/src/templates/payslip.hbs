@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Payslip for {{payPeriodLabel}}</div>
+      <h1 class="doc-title">Salary Statement</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Pay Period</span>
+        <span class="meta-v">{{periodStart}} &nbsp;–&nbsp; {{periodEnd}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="pay-grid">
+        <div class="cell"><div class="k">Employee Name</div><div class="v">{{fullName}}</div></div>
+        <div class="cell"><div class="k">Designation</div><div class="v">{{jobTitle}}</div></div>
+        <div class="cell"><div class="k">Department</div><div class="v">{{department}}</div></div>
+        <div class="cell"><div class="k">Work Location</div><div class="v">{{place}}, India</div></div>
+        <div class="cell"><div class="k">Date of Joining</div><div class="v">{{joinDate}}</div></div>
+        <div class="cell"><div class="k">Pay Date</div><div class="v">{{generatedDate}}</div></div>
+      </div>
+
+      <div class="pay-cols">
+        <div>
+          <table class="amt">
+            <caption>Earnings</caption>
+            {{#each earningLines}}
+            <tr><td>{{this.label}}</td><td>{{this.amount}}</td></tr>
+            {{/each}}
+            <tr class="sum"><td>Gross Earnings</td><td>{{grossFormatted}}</td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="amt">
+            <caption>Deductions</caption>
+            {{#each deductionLines}}
+            <tr><td>{{this.label}}</td><td>{{this.amount}}</td></tr>
+            {{/each}}
+            <tr class="sum"><td>Total Deductions</td><td>{{deductionsFormatted}}</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="netbox">
+        <div>
+          <div class="label">Net Pay</div>
+          <div class="words">{{netPayWords}}</div>
+        </div>
+        <div class="amount">{{netPayFormatted}}</div>
+      </div>
+
+      <div class="note">
+        This is a computer-generated salary statement and does not require a signature.
+        Earnings and deductions are computed in accordance with company policy and
+        applicable statutory regulations. For any payroll queries, please contact the
+        People team at {{companyEmail}}.
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

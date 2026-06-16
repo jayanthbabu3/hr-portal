@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">To Whomsoever It May Concern</div>
+      <h1 class="doc-title">Experience Certificate</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        This is to certify that <strong>{{fullName}}</strong> was employed with
+        <strong>{{companyName}}</strong> as <strong>{{jobTitle}}</strong> in the
+        <strong>{{department}}</strong> department from <strong>{{joinDate}}</strong>
+        to <strong>{{lastWorkingDay}}</strong>.
+      </p>
+      <p>
+        During this tenure of approximately {{tenureYears}} year(s), {{firstName}}
+        consistently demonstrated professionalism, technical competence, and a strong
+        commitment to delivering quality work. {{firstName}} was a valued member of the
+        team and contributed positively to the goals of the organisation.
+      </p>
+      <p>
+        We found {{firstName}}'s conduct and character to be exemplary throughout the
+        period of employment. We wish {{firstName}} continued success in all future
+        endeavours.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For {{companyName}},</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

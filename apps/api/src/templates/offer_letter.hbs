@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Offer of Employment</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        Following our recent discussions, it is our pleasure to extend an offer of
+        employment at <strong>{{companyName}}</strong>. We were genuinely impressed by
+        your background and are confident you will make a meaningful contribution to
+        our team.
+      </p>
+      <p>The key terms of your appointment are set out below:</p>
+
+      <table class="kv">
+        <tr><th>Position</th><td>{{jobTitle}}</td></tr>
+        <tr><th>Department</th><td>{{department}}</td></tr>
+        <tr><th>Reporting Date</th><td>{{joinDate}}</td></tr>
+        <tr><th>Work Location</th><td>{{place}}, India</td></tr>
+        <tr><th>Annual Cost to Company</th><td>{{monthlySalary}} per annum</td></tr>
+        <tr><th>Employment Type</th><td>Full-time, Permanent</td></tr>
+      </table>
+
+      <h2 class="section">Terms &amp; Conditions</h2>
+      <p>
+        Your compensation is inclusive of all statutory benefits and is subject to
+        applicable taxes and deductions in accordance with prevailing law and company
+        policy. You will be eligible for company benefits as detailed in the employee
+        handbook provided during onboarding.
+      </p>
+      <p>
+        This offer is contingent upon the successful completion of background
+        verification, submission of the required onboarding documents, and your
+        continued eligibility to work in India.
+      </p>
+      <p>
+        Kindly confirm your acceptance by countersigning this letter and returning it
+        within <strong>seven (7) business days</strong> from the date of issue. We are
+        delighted at the prospect of welcoming you aboard.
+      </p>
+
+      <div class="sign-row">
+        <div class="col">
+          <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For and on behalf of {{companyName}},</p>
+          <div class="sign__space"></div>
+          <div class="sign__rule"></div>
+          <div class="sign__name">{{signatoryName}}</div>
+          <div class="sign__title">{{signatoryTitle}}</div>
+        </div>
+        <div class="col">
+          <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">Accepted &amp; agreed,</p>
+          <div class="sign__space"></div>
+          <div class="sign__rule"></div>
+          <div class="sign__name">{{fullName}}</div>
+          <div class="sign__title">Date: ____________________</div>
+        </div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

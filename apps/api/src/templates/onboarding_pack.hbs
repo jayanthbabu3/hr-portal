@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Welcome Aboard</div>
+      <h1 class="doc-title">Onboarding Pack</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Employee</span>
+        <span class="meta-v">{{fullName}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Start Date</span>
+        <span class="meta-v">{{joinDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Hi {{firstName}}, welcome to {{companyName}}!</p>
+      <p>
+        We are thrilled to have you join the <strong>{{department}}</strong> team as
+        <strong>{{jobTitle}}</strong>. This pack contains everything you need to make
+        your first day smooth and productive.
+      </p>
+
+      <h2 class="section">Your Appointment</h2>
+      <table class="kv">
+        <tr><th>Work Email</th><td>{{email}}</td></tr>
+        <tr><th>Department</th><td>{{department}}</td></tr>
+        <tr><th>Designation</th><td>{{jobTitle}}</td></tr>
+        <tr><th>Work Location</th><td>{{place}}, India</td></tr>
+        <tr><th>HR Contact</th><td>{{signatoryName}} · {{companyEmail}}</td></tr>
+      </table>
+
+      <h2 class="section">Pre-Joining Checklist</h2>
+      <div class="checklist">
+        <div class="checklist__item"><span class="checklist__box"></span> Government photo ID (Aadhaar / Passport) <span class="checklist__tag">Required</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> PAN card copy for payroll &amp; tax <span class="checklist__tag">Required</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> Bank account details for salary credit <span class="checklist__tag">Required</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> Previous employment &amp; relieving letters <span class="checklist__tag">If applicable</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> Educational certificates <span class="checklist__tag">Required</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> Passport-size photographs <span class="checklist__tag">x2</span></div>
+        <div class="checklist__item"><span class="checklist__box"></span> Signed employee handbook acknowledgment <span class="checklist__tag">Day 1</span></div>
+      </div>
+
+      <h2 class="section">Your First Day</h2>
+      <p>
+        Please arrive by <strong>9:30 AM</strong> at our {{place}} office. Our People
+        team will greet you, complete documentation, and set up your workspace and IT
+        equipment. Lunch is on us — it's a great chance to meet the team.
+      </p>
+      <p style="margin-bottom:0;">
+        Questions before you start? Reach out to <strong>{{signatoryName}}</strong> at
+        {{companyEmail}} or {{companyPhone}}. We can't wait to see you!
+      </p>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

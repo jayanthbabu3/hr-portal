@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Confirmation of Employment</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        We are pleased to confirm your employment with <strong>{{companyName}}</strong> as
+        <strong>{{jobTitle}}</strong> in the <strong>{{department}}</strong> department.
+        Having successfully completed your probationary period, your services are hereby
+        confirmed with effect from <strong>{{effectiveDate}}</strong>.
+      </p>
+      <p>
+        Throughout your probation, you demonstrated strong commitment, professionalism,
+        and capability in your role. As a confirmed employee, you are now eligible for all
+        benefits applicable to permanent staff as per company policy.
+      </p>
+      <p>
+        We congratulate you on your confirmation and look forward to your continued
+        contributions and growth with the organisation.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For {{companyName}},</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

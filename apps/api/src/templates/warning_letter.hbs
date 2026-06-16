@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Letter of Warning</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        This letter serves as a formal warning regarding the following matter concerning
+        your conduct / performance as <strong>{{jobTitle}}</strong> in the
+        <strong>{{department}}</strong> department:
+      </p>
+
+      <table class="kv">
+        <tr><th>Subject of Concern</th><td>{{#if reason}}{{reason}}{{else}}As discussed with you{{/if}}</td></tr>
+        {{#if effectiveDate}}<tr><th>Date of Incident</th><td>{{effectiveDate}}</td></tr>{{/if}}
+      </table>
+
+      <p>
+        We expect all employees to uphold the standards and values of
+        <strong>{{companyName}}</strong>. The above conduct is not in keeping with these
+        expectations and must be addressed promptly.
+      </p>
+      <p>
+        You are advised to take immediate corrective action. Please note that a failure to
+        demonstrate sustained improvement may result in further disciplinary action, up to
+        and including termination of employment.
+      </p>
+      <p>
+        We are confident you will treat this matter with the seriousness it warrants and
+        take the necessary steps to improve.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For {{companyName}},</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+      </div>
+
+      <div class="note">
+        Acknowledgement of receipt: I confirm that I have received and understood the
+        contents of this letter.<br/><br/>
+        Employee signature: ____________________ &nbsp;&nbsp; Date: ____________________
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

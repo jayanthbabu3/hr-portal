@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Salary Revision Letter</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        We are pleased to inform you that, following a review of your performance, your
+        compensation has been revised effective <strong>{{effectiveDate}}</strong>. This
+        revision reflects our appreciation of your dedication and contributions to
+        <strong>{{companyName}}</strong>.
+      </p>
+
+      <table class="kv">
+        <tr><th>Employee</th><td>{{fullName}}</td></tr>
+        <tr><th>Designation</th><td>{{jobTitle}}</td></tr>
+        <tr><th>Department</th><td>{{department}}</td></tr>
+        <tr><th>Previous Annual CTC</th><td>{{monthlySalary}} per annum</td></tr>
+        {{#if newSalaryFormatted}}<tr><th>Revised Annual CTC</th><td>{{newSalaryFormatted}} per annum</td></tr>{{/if}}
+        <tr><th>Effective Date</th><td>{{effectiveDate}}</td></tr>
+      </table>
+
+      <p>
+        The revised compensation is inclusive of all statutory benefits and is subject to
+        applicable taxes and deductions in accordance with prevailing law and company
+        policy. All other terms and conditions of your employment remain unchanged.
+      </p>
+      <p>
+        We thank you for your commitment and look forward to your continued growth with us.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">Warm regards,</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+        <div class="sign__title">{{companyName}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

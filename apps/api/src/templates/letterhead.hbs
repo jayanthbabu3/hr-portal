@@ -1,0 +1,19 @@
+<header class="lh">
+  <div class="lh__brand">
+    {{#if logoUrl}}
+      <img class="lh__logo" src="{{logoUrl}}" alt="{{companyName}}"/>
+    {{else}}
+      <div class="lh__mark">{{monogram}}</div>
+    {{/if}}
+    <div class="lh__id">
+      <div class="lh__name">{{companyName}}</div>
+      <div class="lh__tag">Applied Neurotechnology</div>
+    </div>
+  </div>
+  <div class="lh__contact">
+    <div>{{companyAddressInline}}</div>
+    <div>{{companyEmail}} &nbsp;·&nbsp; {{companyPhone}}</div>
+    <div>{{companyWebsite}}</div>
+  </div>
+</header>
+<div class="lh__rule"></div>

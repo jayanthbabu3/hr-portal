@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">{{> base-styles}}</head>
+<body>
+  <div class="sheet">
+    {{> letterhead}}
+
+    <div class="doc-head">
+      <div class="doc-eyebrow">Private &amp; Confidential</div>
+      <h1 class="doc-title">Relieving Letter</h1>
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <span class="meta-k">Reference No.</span>
+        <span class="meta-v">{{refNo}}</span>
+      </div>
+      <div class="right">
+        <span class="meta-k">Date of Issue</span>
+        <span class="meta-v">{{generatedDate}}</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Dear {{fullName}},</p>
+      <p>
+        This letter is to formally confirm that you have been relieved from your duties
+        as <strong>{{jobTitle}}</strong> in the <strong>{{department}}</strong>
+        department at <strong>{{companyName}}</strong>, effective close of business on
+        <strong>{{lastWorkingDay}}</strong>.
+      </p>
+      <p>
+        Our records confirm that you have completed all exit formalities and handed over
+        your responsibilities and company assets satisfactorily. We acknowledge and
+        appreciate your contributions during your tenure from <strong>{{joinDate}}</strong>
+        to <strong>{{lastWorkingDay}}</strong>.
+      </p>
+      <p>
+        We thank you for your service and wish you the very best in your future
+        professional pursuits.
+      </p>
+
+      <div class="sign">
+        <p style="margin:0 0 6px; font-size:10px; color:var(--muted);">For {{companyName}},</p>
+        <div class="sign__space"></div>
+        <div class="sign__rule"></div>
+        <div class="sign__name">{{signatoryName}}</div>
+        <div class="sign__title">{{signatoryTitle}}</div>
+      </div>
+    </div>
+
+    {{> footer}}
+  </div>
+</body>
+</html>

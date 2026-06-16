@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum EmployeeStatus {
+  onboarding
+  active
+  offboarding
+  terminated
+}
+
+enum DocumentType {
+  offer_letter
+  onboarding_pack
+  payslip
+  experience_letter
+  relieving_letter
+  promotion_letter
+  increment_letter
+  confirmation_letter
+  warning_letter
+  employment_verification
+  internship_certificate
+  noc
+}
+
+enum LeaveStatus {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum UserRole {
+  hr_admin
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         UserRole @default(hr_admin)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  auditLogs    AuditLog[]
+}
+
+model Employee {
+  id              String         @id @default(uuid())
+  firstName       String
+  lastName        String
+  email           String         @unique
+  phone           String?
+  department      String
+  jobTitle        String
+  joinDate        DateTime
+  lastWorkingDay  DateTime?
+  salary          Float
+  currency        String         @default("INR")
+  status          EmployeeStatus @default(onboarding)
+
+  dateOfBirth           DateTime?
+  gender                String?
+  address               String?
+  emergencyContactName  String?
+  emergencyContactPhone String?
+  employmentType        String?    @default("full_time")
+  workLocation          String?
+  pan                   String?
+  bankName              String?
+  bankAccount           String?
+  ifsc                  String?
+
+  managerId       String?
+  manager         Employee?      @relation("EmployeeManager", fields: [managerId], references: [id])
+  reports         Employee[]     @relation("EmployeeManager")
+
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  documents       Document[]
+  payslips        Payslip[]
+  leaveRequests   LeaveRequest[]
+  auditLogs       AuditLog[]
+}
+
+model Holiday {
+  id          String   @id @default(uuid())
+  name        String
+  date        DateTime
+  type        String   @default("public")
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model LeaveType {
+  id          String         @id @default(uuid())
+  name        String
+  code        String         @unique
+  annualQuota Float          @default(0)
+  paid        Boolean        @default(true)
+  color       String?
+  createdAt   DateTime       @default(now())
+  requests    LeaveRequest[]
+}
+
+model LeaveRequest {
+  id          String      @id @default(uuid())
+  employeeId  String
+  employee    Employee    @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  leaveTypeId String
+  leaveType   LeaveType   @relation(fields: [leaveTypeId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  days        Float
+  reason      String?
+  status      LeaveStatus @default(pending)
+  reviewedBy  String?
+  reviewedAt  DateTime?
+  reviewNote  String?
+  createdAt   DateTime    @default(now())
+}
+
+model Document {
+  id          String       @id @default(uuid())
+  employeeId  String
+  employee    Employee     @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  type        DocumentType
+  fileName    String
+  filePath    String
+  version     Int          @default(1)
+  generatedAt DateTime     @default(now())
+  sentAt      DateTime?
+  sentTo      String?
+  createdAt   DateTime     @default(now())
+  payslip     Payslip?
+}
+
+model Payslip {
+  id           String    @id @default(uuid())
+  employeeId   String
+  employee     Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  periodStart  DateTime
+  periodEnd    DateTime
+  earnings     Float
+  deductions   Float
+  netPay       Float
+  documentId   String?   @unique
+  document     Document? @relation(fields: [documentId], references: [id])
+  createdAt    DateTime  @default(now())
+}
+
+model Template {
+  id        String       @id @default(uuid())
+  type      DocumentType @unique
+  htmlBody  String
+  subject   String?
+  updatedAt DateTime     @updatedAt
+}
+
+model CompanySettings {
+  id              String   @id @default("default")
+  name            String
+  address         String
+  logoUrl         String?
+  signatoryName   String
+  signatoryTitle  String
+  updatedAt       DateTime @updatedAt
+}
+
+model EmailSettings {
+  id        String   @id @default("default")
+  smtpHost  String
+  smtpPort  Int
+  smtpUser  String?
+  smtpPass  String?
+  fromEmail String
+  fromName  String
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id         String    @id @default(uuid())
+  userId     String?
+  user       User?     @relation(fields: [userId], references: [id])
+  employeeId String?
+  employee   Employee? @relation(fields: [employeeId], references: [id])
+  action     String
+  details    String?
+  createdAt  DateTime  @default(now())
+}
